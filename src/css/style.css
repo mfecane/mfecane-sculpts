@@ -115,6 +115,10 @@ body {
   color: #fff;
 }
 
+.content {
+  box-shadow: 0 -10px 10px rgb(0 0 0 / .3) inset;
+}
+
 .header__title-group {
   margin: 40px 0px 80px 0px;
   max-width: 400px;
