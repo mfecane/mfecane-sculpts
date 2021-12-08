@@ -1,2 +1,7 @@
-.vscode
-dist
+/node_modules
+/dist
+/trash
+/.vscode
+/design
+
+/package-lock.json
