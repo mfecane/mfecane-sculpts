@@ -130,6 +130,7 @@ module.exports = {
   output: {
     path: path.resolve(root, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules,
@@ -147,5 +148,8 @@ module.exports = {
     },
   },
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: plugins,
 }

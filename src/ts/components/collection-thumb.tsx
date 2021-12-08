@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import style from 'ts/components/collection-thumb.module.scss'
 
-const CollectionThumbnail = ({ item }) => {
+// TODO change images on hover
+
+const CollectionThumbnail = ({ item, index }) => {
   let displayImagesCount = 3
   let itemStyles = style['item']
   let itemGridStyles = style['item__grid']
@@ -60,14 +63,16 @@ const CollectionThumbnail = ({ item }) => {
   })
 
   return (
-    <div className={style['item']}>
-      <div className={style['item__header-container']}>
-        <div className={style['item__name']}>Lorem, ipsum dolor.</div>
-        <div className={style['item__header-menu']}></div>
-        <div className={style['item__count']}>{item.images.length} items</div>
+    <Link to={`/collections/${index}`}>
+      <div className={style['item']}>
+        <div className={style['item__header-container']}>
+          <div className={style['item__name']}>Lorem, ipsum dolor.</div>
+          <div className={style['item__header-menu']}></div>
+          <div className={style['item__count']}>{item.images.length} items</div>
+        </div>
+        <div className={itemGridStyles}>{imageContent}</div>
       </div>
-      <div className={itemGridStyles}>{imageContent}</div>
-    </div>
+    </Link>
   )
 }
 
