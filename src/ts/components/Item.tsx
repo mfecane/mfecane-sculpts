@@ -1,14 +1,34 @@
 import React from 'react'
-import img1 from 'assets/images/albedo.jpg'
-import img2 from 'assets/images/biba.jpg'
-import img3 from 'assets/images/moto.jpg'
+
+import Item from 'ts/model/components/item'
 
 import style from 'ts/components/Item.module.scss'
 
-const Item = ({ id, index, images }) => {
-  console.log('style', style)
+const ItemConponent = ({ item }) => {
+  let displayImagesCount = 3
 
-  images = [img1, img2, img3].map((src, index) => (
+  switch (item.index) {
+    case 0:
+      displayImagesCount = 5
+      break
+    case 1:
+      displayImagesCount = 3
+      break
+    case 2:
+    default:
+      displayImagesCount = 3
+      break
+  }
+
+  let displayImages = item.images.slice(0, displayImagesCount)
+
+  if (displayImages.length < displayImagesCount) {
+    displayImages = displayImages.concat(
+      new Array(displayImagesCount - displayImages.length)
+    )
+  }
+
+  const imageContent = displayImages.map((src, index) => (
     <div className={style['item__image-container']} key={index}>
       <img src={src} className={style['item__image']} />
     </div>
@@ -21,7 +41,7 @@ const Item = ({ id, index, images }) => {
         <div className={style['item__header-menu']}></div>
         <div className={style['item__count']}>100 items</div>
       </div>
-      <div className={style['item__grid']}>{images}</div>
+      <div className={style['item__grid']}>{imageContent}</div>
     </div>
   )
 }
@@ -29,4 +49,4 @@ const Item = ({ id, index, images }) => {
 // inherit, combine, show all from existring +
 // found items
 
-export default Item
+export default ItemConponent

@@ -30,6 +30,7 @@ rules.push({
 
 rules.push({
   test: /\.(scss|css)$/,
+  exclude: /\.module\.scss$/i,
   use: [
     MiniCssExtractPlugin.loader,
     {
@@ -68,10 +69,12 @@ rules.push({
 rules.push({
   test: /\.module\.(scss|css)$/,
   use: [
-    MiniCssExtractPlugin.loader,
+    {
+      loader: 'style-loader',
+    },
     {
       loader: 'css-loader',
-      options: { sourceMap: true, importLoaders: 1, modules: true },
+      options: { sourceMap: true, importLoaders: 2, modules: true },
     },
     {
       loader: 'postcss-loader',
@@ -97,7 +100,6 @@ rules.push({
     },
     {
       loader: 'sass-loader',
-      options: { sourceMap: true },
     },
   ],
 })

@@ -1,6 +1,6 @@
 import React from 'react'
-import Item from 'ts/components/Item'
+import ItemList from 'ts/components/ItemList'
 
-const App = () => <Item id=""></Item>
+const App = () => <ItemList></ItemList>
 
 export default App
