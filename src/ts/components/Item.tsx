@@ -3,27 +3,30 @@ import img1 from 'assets/images/albedo.jpg'
 import img2 from 'assets/images/biba.jpg'
 import img3 from 'assets/images/moto.jpg'
 
-import 'ts/components/Item.scss'
+import style from 'ts/components/Item.module.scss'
 
-const Item = ({ id }) => {
-  const images = [img1, img2, img3].map((src, index) => (
-    <div className="item__image-container" key={index}>
-      <img src={src} class="item__image" />
+const Item = ({ id, index, images }) => {
+  console.log('style', style)
+
+  images = [img1, img2, img3].map((src, index) => (
+    <div className={style['item__image-container']} key={index}>
+      <img src={src} className={style['item__image']} />
     </div>
   ))
 
   return (
-    <div className="item upper-grid_item1">
-      <div className="item__header-container">
-        <div className="item__name">Lorem, ipsum dolor.</div>
-        <div className="item__header-menu"></div>
-        <div className="item__count">100 items</div>
+    <div className={`${style['item']} ${style['upper-grid_item1']}`}>
+      <div className={style['item__header-container']}>
+        <div className={style['item__name']}>Lorem, ipsum dolor.</div>
+        <div className={style['item__header-menu']}></div>
+        <div className={style['item__count']}>100 items</div>
       </div>
-      <div className="item__grid">{images}</div>
+      <div className={style['item__grid']}>{images}</div>
     </div>
   )
 }
 
-// inherit, combine
+// inherit, combine, show all from existring +
+// found items
 
 export default Item
