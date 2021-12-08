@@ -74,7 +74,15 @@ rules.push({
     },
     {
       loader: 'css-loader',
-      options: { sourceMap: true, importLoaders: 2, modules: true },
+      options: {
+        sourceMap: true,
+        importLoaders: 2,
+        modules: {
+          mode: 'local',
+          localIdentName: '[local]--[hash:base64:5]',
+          // localsConvention: "camelCase"
+        },
+      },
     },
     {
       loader: 'postcss-loader',

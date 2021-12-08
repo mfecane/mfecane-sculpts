@@ -1,6 +1,6 @@
 import React from 'react'
-import ItemList from 'ts/components/ItemList'
+import MainPage from 'ts/components/MainPage'
 
-const App = () => <ItemList></ItemList>
+const App = () => <MainPage />
 
 export default App
