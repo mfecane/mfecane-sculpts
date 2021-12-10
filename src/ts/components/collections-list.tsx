@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import FirstRow from 'ts/components/FirstRow'
 import MainGrid from './MainGrid'
-import { Context } from 'ts/components/context'
+import { ImageContext } from 'ts/conext/images-context'
 
-const MainPage = () => {
-  const [imagesList, setImagesList] = useContext(Context)
+const CollectionsList = () => {
+  const [imagesList, setImagesList] = useContext(ImageContext)
 
   if (!imagesList) {
     return <></>
@@ -21,4 +21,4 @@ const MainPage = () => {
   )
 }
 
-export default MainPage
+export default CollectionsList

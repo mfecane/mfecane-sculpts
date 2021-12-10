@@ -64,6 +64,10 @@ export default class Imageslist {
         resolve([img.width, img.height])
       }
 
+      img.onerror = function (e) {
+        reject(e)
+      }
+
       img.src = src
     })
   }

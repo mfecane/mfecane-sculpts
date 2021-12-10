@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import MainPage from 'ts/components/MainPage'
+
+import { ImageContext } from 'ts/conext/images-context'
+
+import CollectionsList from 'ts/components/collections-list'
 import Collection from 'ts/components/collection'
 import Layout from 'ts/components/layout'
-import { Context } from 'ts/components/context'
 import Imageslist from 'ts/model/components/images-list'
 
 const App = () => {
@@ -21,17 +23,28 @@ const App = () => {
   }, [])
 
   return (
-    <Context.Provider value={[context, setContext]}>
+    <ImageContext.Provider value={[context, setContext]}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout content={<MainPage />} />} />
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <CollectionsList />
+              </Layout>
+            }
+          />
           <Route
             path="/collections/:id"
-            element={<Layout content={<Collection />} />}
+            element={
+              <Layout>
+                <Collection />
+              </Layout>
+            }
           />
         </Routes>
       </BrowserRouter>
-    </Context.Provider>
+    </ImageContext.Provider>
   )
 }
 

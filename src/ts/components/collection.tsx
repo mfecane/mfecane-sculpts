@@ -1,11 +1,13 @@
-import React, { useRef, useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { Context } from 'ts/components/context'
+import { ImageContext } from 'ts/conext/images-context'
+
+import CollectionControls from 'ts/components/collection-controls'
 
 import styles from 'ts/components/collection.module.scss'
 
 const Collection = (props) => {
-  const [imagesList, setImagesList] = useContext(Context)
+  const [imagesList, setImagesList] = useContext(ImageContext)
   let params = useParams()
 
   if (!imagesList) {
@@ -16,7 +18,12 @@ const Collection = (props) => {
   let imagesContent = (collection?.images || []).map((img, index: number) => (
     <CollectionImage {...img} key={index} />
   ))
-  return <div className={styles['image-list']}>{imagesContent}</div>
+  return (
+    <>
+      <CollectionControls />
+      <div className={styles['image-list']}>{imagesContent}</div>
+    </>
+  )
 }
 
 const CollectionImage = ({ width, height, src }: { src: string }) => {
@@ -32,8 +39,6 @@ const CollectionImage = ({ width, height, src }: { src: string }) => {
   } else {
     ratioClass = styles['image-container-4']
   }
-
-  console.log(ratioClass)
 
   return (
     <div className={`${styles['image-container']} ${ratioClass}`}>
