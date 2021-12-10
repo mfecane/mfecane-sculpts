@@ -4,7 +4,7 @@ import Checkbox from 'ts/components/checkbox'
 
 import styles from 'ts/components/collection-controls.module.scss'
 
-export default () => {
+export default ({ single, ideas }) => {
   return (
     <div className={styles['controls']}>
       <Checkbox label="More ideas" />

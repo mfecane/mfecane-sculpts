@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ImageContext } from 'ts/conext/images-context'
 
@@ -8,6 +8,11 @@ import styles from 'ts/components/collection.module.scss'
 
 const Collection = (props) => {
   const [imagesList, setImagesList] = useContext(ImageContext)
+  const [{ single, ideas }, setState] = useState({
+    single: false,
+    ideas: false,
+  })
+
   let params = useParams()
 
   if (!imagesList) {
@@ -20,7 +25,7 @@ const Collection = (props) => {
   ))
   return (
     <>
-      <CollectionControls />
+      <CollectionControls single={single} ideas={ideas} />
       <div className={styles['image-list']}>{imagesContent}</div>
     </>
   )
