@@ -28,11 +28,13 @@ const CollectionThumbnail = ({ item, index }) => {
   let displayImages = item.images.slice(0, displayImagesCount)
   if (displayImages.length < displayImagesCount) {
     displayImages = displayImages.concat(
-      new Array(displayImagesCount - displayImages.length).fill(undefined)
+      new Array(displayImagesCount - displayImages.length).fill({
+        src: undefined,
+      })
     )
   }
 
-  const imageContent = displayImages.map((src, index) => {
+  const imageContent = displayImages.map(({ src }, index) => {
     let imageGridStyles = style['item__image-container']
 
     if (displayImagesCount === 5 && index === 0) {
