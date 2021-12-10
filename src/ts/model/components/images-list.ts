@@ -6,7 +6,7 @@ import img5 from 'assets/images/jew-jitsu.jpg'
 
 const img = [img1, img2, img3, img4, img5]
 
-export default class Imageslist {
+class Imageslist {
   collections = []
 
   constructor() {
@@ -42,3 +42,5 @@ export default class Imageslist {
     return this.collections.slice(from, num)
   }
 }
+
+export let imagesList = new Imageslist()

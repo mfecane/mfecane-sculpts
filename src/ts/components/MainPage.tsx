@@ -1,13 +1,10 @@
 import React from 'react'
 import FirstRow from 'ts/components/FirstRow'
-import Imageslist from 'ts/model/components/images-list'
-import Item from 'ts/model/components/item'
+import { imagesList } from 'ts/model/components/images-list'
 
 import MainGrid from './MainGrid'
 
 const MainPage = () => {
-  let imagesList = new Imageslist()
-
   let firstRowItems = imagesList.getItems(0, 3)
   let mainGridItems = imagesList.getItems(3)
 
